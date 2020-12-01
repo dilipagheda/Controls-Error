@@ -2,6 +2,9 @@
 
 Q-CTRL Controls React Example is a example [React](https://reactjs.org/) project showing list of controls which users can select to edit and save.
 
+Demo [q-ctrl-controls-example-error](https://q-ctrl-controls-example-error.netlify.app/)
+Working Demo [q-ctrl-controls-example](https://q-ctrl-controls-example.netlify.app/)
+
 - Project was creted with [create-react-app](https://reactjs.org/docs/create-a-new-react-app.html)
 - Packages are build managed with [yarn](https://yarnpkg.com/)
 - [axios](https://github.com/axios/axios) is used to make api calls to return and update controls
