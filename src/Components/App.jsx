@@ -9,22 +9,26 @@ import Control from "./Control";
 import ErrorModal from "./ErrorModal";
 
 function App() {
-  let loading = useRef(true);
-  let hasError = useRef(false);
+  
   const [controls, setControls] = useState([]);
   const [selectedControlID, setSelectedControlID] = useState(null);
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(true)
 
   const loadControls = useCallback(() => {
-    loading.current = true;
-    hasError.current = false;
+    setLoading(true)
+    setError(false)
     axios
       .get(`${process.env.REACT_APP_MOACKAPI_URL}/controls`)
-      .then(({ data }) => setControls(data.data))
+      .then(({ data }) => {
+        console.log(data)
+        setControls(data.data)
+      })
       .catch(() => {
-        hasError.current = true;
+        setError(true)
       })
       .finally(() => {
-        loading.current = false;
+        setLoading(false)
       });
   }, []);
 
@@ -56,7 +60,7 @@ function App() {
           {selectedControlID && <Control id={selectedControlID} />}
         </div>
       </div>
-      {hasError && (
+      {error && (
         <ErrorModal onTryAgain={() => loadControls()}>
           unable to load controls
         </ErrorModal>
